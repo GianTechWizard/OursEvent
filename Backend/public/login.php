@@ -1,5 +1,5 @@
 <?php
-// UI Frontend
+// UI Frontend + pembuatan UI login (admin + user)
 
 // Backend hanya menerima POST ke login_process.php
 
