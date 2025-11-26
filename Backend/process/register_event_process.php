@@ -1,4 +1,4 @@
-<!-- User mendaftar event -->
+<!-- Logic User mendaftar event -->
 
 <?php
 

@@ -1,4 +1,4 @@
-<!-- Prosses login user / admin -->
+<!-- Prosses login user  -->
 
 <?php
 

@@ -1,18 +1,42 @@
 <?php
-    require_once "../includes/db_connection.php";
-    require_once "../includes/session_check.php";
 
-    $id = $_SESSION ['user_id'];
+require_once "../includes/db_connect.php";
+require_once "../includes/session_check.php"; 
 
-    $sql = "SELECT pendaftaran_event . * , events. judul_event 
-    FROM pendaftaran_event p
-    JOIN events e ON pendaftaran_event . id_event = events . id_event
-    WHERE pendaftaran_event . id_user = '$id'";
-
-    $data = mysqli_query ($conn, $sql);
-
-    //  FRONTEND:
-    // tampilkan list pendaftaran event
+// pengecekkan session_check untuk memastikan user harus login dulu (ISI CODE SINI- MARCEL)
 
 
+// proses Pengambilan semua event yang sudah didaftarkan oleh user (ISI CODE SINI- MARCEL)
+
+
+
+/*
+==============================================================
+INI BAGIAN FRONTEND 
+--------------------------------------------------------------
+Frontend akan membuat UI RIWAYAT PENDAFTARAN USER.
+
+Data yang ada di $data:
+- judul_event
+- tanggal event
+- lokasi event
+- jumlah_tiket
+- total_biaya
+- status (Pending / Paid / Cancel)
+
+Frontend harus looping:
+
+while ($row = mysqli_fetch_assoc($data)) {
+    tampilkan:
+    - judul_event
+    - tanggal
+    - lokasi
+    - jumlah_tiket
+    - total_biaya
+    - status
+}
+
+Backend hanya menyiapkan data.
+==============================================================
+*/
 ?>
