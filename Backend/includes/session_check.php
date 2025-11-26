@@ -9,7 +9,6 @@
     }
 
     // pengecekkan admin
-
     function isAdmin(){ 
         return isset($_SESSION["user_id"]) && $_SESSION["user_id"] == "admin";
     }
