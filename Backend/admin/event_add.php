@@ -1,14 +1,6 @@
-  <?php
-    require_once "../includes/db_connection.php";
-    require_once "../includes/session_check.php";
-
-    if (!isAdmin()) 
-        exit;
-    
-    // proses pengambilan kategori
-    $kategori = mysqli_query($conn,"SELECT * FROM kategori_event");
-
-    ?>
+<?php
+ 
+ ?>
 
 <!-- Bagian FRONTEND:
 form tambah event
