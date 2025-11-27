@@ -1,4 +1,6 @@
 <?php
+
+//oke
 // Menghubungkan ke database (ISI CODE SINI - ERNEST)
 
 // Memanggil fungsi (ISI CODE SINI - ERNEST)
