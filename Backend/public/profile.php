@@ -17,12 +17,24 @@
 
 
 // Menghubungkan ke database (ISI SINI - MARCEL)
+require_once "../includes/db_connection.php";
+require_once "../includes/session_check.php"; 
 
 // Memanggil fungsi (ISI SINI - MARCEL)
+ require_once "../includes/functions.php";
 
 // Mengambil ID user dari session (ISI SINI - MARCEL)
+$id_user = $_SESSION['id_user'];
 
 // Query data user (ISI SINI - MARCEL)
+$sql = "SELECT id_user, username, email, no_hp FROM users WHERE id_user = ?";
+$stmt = mysqli_prepare($conn, $sql);
+
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+$userData = mysqli_fetch_assoc($result);
 
 
 
