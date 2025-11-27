@@ -27,8 +27,4 @@ header('Content-Type: application/json');
 echo json_encode($data);
 exit;
  
-
-//tes berubah apa git
-
-var a 
 ?>
