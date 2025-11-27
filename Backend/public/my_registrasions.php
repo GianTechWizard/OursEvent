@@ -26,5 +26,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 header('Content-Type: application/json');
 echo json_encode($data);
 exit;
+ 
 
+//tes berubah apa gitu
 ?>
