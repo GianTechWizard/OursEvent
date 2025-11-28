@@ -8,5 +8,8 @@
 // Proses pengambilan 1 event dari database (ISI CODE SINI - ERNEST)
 
 
+header("Content-Type: application/json");
+echo json_encode($data);
+exit;
 
 ?>
