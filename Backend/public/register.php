@@ -23,3 +23,5 @@
 // Backend *hanya* menerima POST di register_process.php.
 // ====================================================================
 ?>
+
+<?php include "../../Frontend/pages/register.html"; ?>
