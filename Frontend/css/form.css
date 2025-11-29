@@ -25,12 +25,6 @@ body {
     box-sizing: border-box;
 }
 
-.left-box .logo {
-    width: 120px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
 
 .left-box .title {
     margin-top: 130px;
