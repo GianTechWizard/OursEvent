@@ -22,4 +22,7 @@ BACKEND MUST DO:
 
 // Backend implement logic registrasi user
 //jangan lupa juga enskiripsi password
+
+// ISI CODE DI SINI - ERNEST
+
 ?>
