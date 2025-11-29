@@ -1,12 +1,81 @@
-<!-- ============================================================================
-FRONTEND FILE : register.html
----------------------------------------------------------------------------------
-Tujuan file:
-✔ Form Register UI (nama, email, password, no HP)
-✔ Mengirim data ke BACKEND/process/register_process.php
-✔ Tidak menggunakan PHP dalam file ini
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Register - OursEvent</title>
 
-Backend register_process.php:
-- Encrypt password (password_hash)
-- Insert user ke tabel users
-============================================================================ -->
+    <link rel="stylesheet" type="text/css" href="../css/form.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap"
+    />
+  </head>
+
+  <body>
+    <div class="form-container">
+      <div class="form-box">
+        <h2 class="form-title">Welcome, To Our Event</h2>
+        <p class="form-subtitle">Create Your Account</p>
+
+        <form action="../Backend/process/register_process.php" method="post">
+          <input
+            type="text"
+            name="username"
+            class="form-input"
+            placeholder="Nama Lengkap"
+            required="required"
+          />
+
+          <input
+            type="text"
+            name="no_hp"
+            class="form-input"
+            placeholder="Nomor Telepon"
+            required="required"
+          />
+
+          <input
+            type="text"
+            name="institusi"
+            class="form-input"
+            placeholder="Institusi"
+            required="required"
+          />
+
+          <input
+            type="email"
+            name="email"
+            class="form-input"
+            placeholder="E-mail"
+            required="required"
+          />
+
+          <input
+            type="password"
+            name="password"
+            class="form-input"
+            placeholder="Password"
+            required="required"
+          />
+
+          <input
+            type="password"
+            name="confirm_password"
+            class="form-input"
+            placeholder="Confirm Password"
+            required="required"
+          />
+
+          <button type="submit" class="form-btn">Sign Up</button>
+        </form>
+
+        <p class="form-footer">
+          Already have an account?
+          <a href="login.xhtml" class="form-link">Login</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,13 +1,55 @@
-<!-- ============================================================================
-FRONTEND FILE : login.html
----------------------------------------------------------------------------------
-Tujuan file:
-✔ Menampilkan form login (email + password)
-✔ Mengirim data ke BACKEND/process/login_process.php (method POST)
-✔ Tidak boleh ada PHP di sini
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>OursEvent - Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/form.css" />
+  </head>
 
-Backend login_process.php:
-- Validasi email dan password
-- Set session jika benar
-- Redirect ke index.php
-============================================================================ -->
+  <body>
+    <div class="container">
+      <div class="left-box">
+        <h1 class="title">Ours Event</h1>
+        <p class="subtitle">
+          Unlock your learning journey.<br />
+          Join inspiring educational events<br />
+          with one click.
+        </p>
+      </div>
+
+      <div class="right-box">
+        <h2 class="welcome">Welcome, To Our Event</h2>
+
+        <form action="../Backend/process/login_process.php" method="post">
+          <div class="input-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="enter your email"
+              required="required"
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="enter your password"
+              required="required"
+            />
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <p class="signup-text">
+          Don't have an account?
+          <a id="signup-link" href="register.xhtml">Sign Up</a>
+        </p>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../js/ui.js"></script>
+  </body>
+</html>
