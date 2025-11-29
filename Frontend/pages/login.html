@@ -1,13 +1,53 @@
-<!-- ============================================================================
-FRONTEND FILE : login.html
----------------------------------------------------------------------------------
-Tujuan file:
-✔ Menampilkan form login (email + password)
-✔ Mengirim data ke BACKEND/process/login_process.php (method POST)
-✔ Tidak boleh ada PHP di sini
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OursEvent - Login</title>
 
-Backend login_process.php:
-- Validasi email dan password
-- Set session jika benar
-- Redirect ke index.php
-============================================================================ -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- White Panel -->
+        <div class="left-box">
+            <img src="../assets/img/FullLogo-removebg-preview.png" class="logo">
+
+            <h1 class="title">Ours Event</h1>
+            <p class="subtitle">
+                Unlock your learning journey.<br>
+                Join inspiring educational events<br>
+                with one click.
+            </p>
+        </div>
+
+        <!-- Blue Panel -->
+        <div class="right-box">
+            <h2 class="welcome">Welcome, To Our Event</h2>
+
+            <div class="input-group">
+                <input type="email" placeholder="enter your email">
+            </div>
+
+            <div class="input-group">
+                <input type="password" placeholder="enter your password">
+            </div>
+
+            <button class="login-btn">Login</button>
+
+            <p class="signup-text">
+                Don't have an account?  
+                <a id="signup-link" href="#">Sign Up</a>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/ui.js"></script>
+</body>
+</html>
