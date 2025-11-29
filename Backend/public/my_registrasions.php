@@ -14,7 +14,7 @@ $sql = "SELECT p.*, e.judul_event FROM pendaftaran_event p
 // Tanda "?" adalah placeholder yang nanti diganti dengan id_user dari session
 
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_bind_param($stmt, "i", $id_user);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 

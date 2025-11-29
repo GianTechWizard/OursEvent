@@ -11,12 +11,14 @@
         exit();
     }
 
-    $id_daftar = $_SESSION["user_id"];
+    $id_daftar = $$_GET["id_daftar"];
+    $id_user   = $_SESSION['id_user'];    // ID user yang login
 
-    //Menghapus data user
-    $sql = "DELETE FROM pendaftaran_event WHERE id_daftar
-            = '$id_daftar' AND id_user = '{$_SESSION['user_id']}'";
-            
+    // Query DELETE (menghapus hanya jika pendaftarannya milik user yang sama)
+    $sql = "DELETE FROM pendaftaran_event 
+            WHERE id_daftar = '$id_daftar' 
+            AND id_user = '$id_user'";   
+
     mysqli_query($conn, $sql);
 
     header("Location: my_registrasions.php");
