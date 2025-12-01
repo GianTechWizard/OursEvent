@@ -47,7 +47,6 @@ body {
     text-decoration: underline;
 }
 
-/* === PROFILE BOX === */
 .profile-box {
     width: 420px;
     background: rgba(255, 255, 255, 0.25);
@@ -57,7 +56,6 @@ body {
     text-align: center;
     backdrop-filter: blur(12px);
 
-    /* agar tidak ketutup header */
     margin-top: 130px;
 }
 
