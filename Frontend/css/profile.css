@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #7ca7ff, #9ed0ff);
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-header {
+    width: 100%;
+    padding: 18px 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.top-header .logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+}
+
+.top-header nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.top-header nav a:hover {
+    text-decoration: underline;
+}
+
+.top-header nav .active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* === PROFILE BOX === */
+.profile-box {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 40px 35px;
+    border-radius: 22px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    text-align: center;
+    backdrop-filter: blur(12px);
+
+    /* agar tidak ketutup header */
+    margin-top: 130px;
+}
+
+.profile-box h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: white;
+    font-weight: 600;
+}
+
+.profile-img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+    background: white;
+    border: 4px solid rgba(255, 255, 255, 0.6);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: #eef4ff;
+    font-size: 14px;
+    outline: none;
+    pointer-events: none;
+    user-select: none;
+}
+
+.btn {
+    width: 100%;
+    background: #ffffff;
+    border: none;
+    padding: 12px;
+    margin-top: 22px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+}
+
+.btn:hover {
+    opacity: 0.95;
+}

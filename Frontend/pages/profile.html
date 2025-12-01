@@ -1,19 +1,38 @@
-<!-- ============================================================================
-FRONTEND FILE : profile.html
----------------------------------------------------------------------------------
-Tujuan file:
-✔ UI untuk menampilkan & mengedit profil user
-✔ BUKAN mengambil data user (itu tugas BACKEND/public/profile.php)
-✔ Form ini akan diisi otomatis oleh PHP (backend) menggunakan value="..."
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - OursEvent</title>
 
-Backend profile.php:
-- Mengambil data user berdasarkan session user_id
-- Mengisi form dengan data user
-- Form submit ke profile_update_process.php
-============================================================================ -->
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
 
-<!-- Catatan:
-Di BACKEND/public/profile.php,
-form berikut akan ditambahkan value PHP seperti:
-value="<?= $user['nama_lengkap'] ?>"
--->
+    <header class="top-header">
+        <div class="logo">OursEvent</div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="event.html">Event</a>
+            <a href="profile.html" class="active">Profile</a>
+        </nav>
+    </header>
+
+    <div class="profile-box">
+        <h1>Profile</h1>
+
+        <div class="profile-img"></div>
+
+        <div class="input-container">
+            <input id="fullname" type="text" readonly>
+            <input id="phone" type="text" readonly>
+            <input id="email" type="email" readonly>
+            <input id="institution" type="text" readonly>
+        </div>
+
+        <button class="btn" id="editBtn">Edit Profile</button>
+    </div>
+
+    <script src="../js/profile.js"></script>
+</body>
+</html>
