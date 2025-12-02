@@ -22,5 +22,59 @@ BACKEND harus:
 ========================================================
 */
 
-//  Backend implement INSERT pendaftaran event
+<?php
+require_once "../includes/db_connect.php";
+require_once "../includes/session_check.php";
+
+// Pastikan user login
+if (!isset($_SESSION['id_user'])) {
+    die("Anda harus login untuk mendaftar event.");
+}
+
+$id_user = $_SESSION['id_user'];
+
+// Ambil data POST dari event_detail.html
+$id_event = $_POST['id_event'] ?? 0;
+$jumlah_tiket = $_POST['jumlah_tiket'] ?? 1;
+
+// Validasi
+if ($id_event <= 0 || $jumlah_tiket <= 0) {
+    die("Data tidak valid.");
+}
+
+// 2. Ambil harga event
+$sql_harga = "SELECT harga FROM events WHERE id_event = ?";
+$stmt_harga = $conn->prepare($sql_harga);
+$stmt_harga->bind_param("i", $id_event);
+$stmt_harga->execute();
+$result_harga = $stmt_harga->get_result();
+
+if ($result_harga->num_rows === 0) {
+    die("Event tidak ditemukan.");
+}
+
+$row_harga = $result_harga->fetch_assoc();
+$harga = $row_harga['harga'];
+$stmt_harga->close();
+
+// 3. Hitung total biaya
+$total_biaya = $harga * $jumlah_tiket;
+
+// 4. Insert ke pendaftaran_event
+$sql_insert = "INSERT INTO pendaftaran_event 
+                (id_user, id_event, jumlah_tiket, total_biaya, status) 
+                VALUES (?, ?, ?, ?, 'Pending')";
+
+$stmt_insert = $conn->prepare($sql_insert);
+$stmt_insert->bind_param("iiid", $id_user, $id_event, $jumlah_tiket, $total_biaya);
+
+if ($stmt_insert->execute()) {
+    header("Location: my_registrations.php");
+    exit;
+} else {
+    die("Error saat menyimpan pendaftaran: " . $stmt_insert->error);
+}
+
+$stmt_insert->close();
+$conn->close();
 ?>

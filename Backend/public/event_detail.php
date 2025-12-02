@@ -1,14 +1,28 @@
 <?php
 
-//oke
-// Menghubungkan ke database (ISI CODE SINI - ERNEST)
+require_once "../includes/db_connect.php";
+require_once "../includes/session_check.php"; 
 
-// Memanggil fungsi (ISI CODE SINI - ERNEST)
+require_once "../includes/functions.php";
 
- // ambil id event dari URL (ISI CODE SINI - ERNEST)
+if (!isset($_GET['id'])) {
+    echo json_encode(["error" => "ID event tidak ditemukan"]);
+    exit;
+}
 
-// Proses pengambilan 1 event dari database (ISI CODE SINI - ERNEST)
+$id_event = $_GET['id'];
 
-
+if ($id > 0) {
+    $result = getEventById($mysqli, $id);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $event = mysqli_fetch_assoc($result);
+        echo "<h1>Detail Event</h1>";
+        echo "<p>Name: " . htmlspecialchars($event['event_name']) . "</p>";
+    } else {
+        echo "Event tidak ditemukan.";
+    }
+} else {
+    echo "ID event tidak valid atau tidak ada di URL.";
+}
 
 ?>
