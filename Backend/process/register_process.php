@@ -1,28 +1,34 @@
 <?php
-/*
-========================================================
-REGISTER PROCESS
-File ini menerima POST dari register.html
 
-Data yang dikirim:
-- nama_lengkap
-- email
-- no_hp
-- password
+   require_once "../includes/db_connection.php";
 
-BACKEND MUST DO:
-1. Validasi input tidak kosong
-2. Cek apakah email sudah digunakan
-3. Hash password → password_hash($password, PASSWORD_DEFAULT)
-4. Insert ke tabel users:
-   - role default = 'user'
-5. Redirect ke login.php setelah sukses
-========================================================
-*/
+   $username = $_POST ['Nama Lengkap'];
+   $email = $_POST ['email'];
+   $no_hp = $_POST ['no_hp'];
+   $institusi = $_POST ['institusi'];
+   $password = $_POST ['password'];
+   $confirm_password = $_POST ['confirm_password'];
 
-// Backend implement logic registrasi user
-//jangan lupa juga enskiripsi password
+   if (empty ($nama_lengkap) || empty ($email) || empty ($no_hp) || empty($password) || empty ($institusi)) {
+      header("Location: ../public/register.php?error=empty");
+   }
 
-// ISI CODE DI SINI - ERNEST
+   if ($password !== $confirm_password) {
+      header("Location: ../public/register.php?error=password_mismatch");
+   }
 
+   $check = mysqli_query($conn,"SELECT * FROM users WHERE email = '$email'");
+   if (mysqli_num_rows($check) > 0) {
+      header("Location: ../public/register.php?error=email_exists");
+   }
+
+   $hashed = password_hash($password, PASSWORD_DEFAULT);
+
+   $sql = "INSERT INTO users (username, email, password, no_hp, institusi, role)
+        VALUES ('$username', '$email', '$hashed_password', '$no_hp', '$institusi', 'users')";
+   
+   mysqli_query($conn, $sql);
+
+   header("Location: ../public/login.php?success=registered"); 
+   exit();
 ?>

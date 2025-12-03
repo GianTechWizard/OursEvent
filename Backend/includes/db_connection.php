@@ -10,10 +10,10 @@ $db = "oursevents";
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if (!$conn) {
-    die("Koneksi Gagal". mysqli_connect_error());
+    die("Connection Failed". mysqli_connect_error());
 }
 
-echo "Koneksi Berhasill"
+echo "Connection Successful";
 
 
 ?>

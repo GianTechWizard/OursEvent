@@ -1,31 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - OursEvent</title>
-
-    <link rel="stylesheet" type="text/css" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/form.css" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap"
     />
   </head>
-
   <body>
     <div class="form-container">
       <div class="form-box">
         <h2 class="form-title">Welcome, To Our Event</h2>
         <p class="form-subtitle">Create Your Account</p>
 
-        <form action="../Backend/process/register_process.php" method="post">
+        <form action="../../Backend/process/register_process.php" method="POST">
           <input
             type="text"
             name="username"
             class="form-input"
             placeholder="Nama Lengkap"
-            required="required"
+            required
           />
 
           <input
@@ -33,23 +30,15 @@
             name="no_hp"
             class="form-input"
             placeholder="Nomor Telepon"
-            required="required"
-          />
-
-          <input
-            type="text"
-            name="institusi"
-            class="form-input"
-            placeholder="Institusi"
-            required="required"
+            required
           />
 
           <input
             type="email"
             name="email"
             class="form-input"
-            placeholder="E-mail"
-            required="required"
+            placeholder="Email"
+            required
           />
 
           <input
@@ -57,7 +46,7 @@
             name="password"
             class="form-input"
             placeholder="Password"
-            required="required"
+            required
           />
 
           <input
@@ -65,15 +54,23 @@
             name="confirm_password"
             class="form-input"
             placeholder="Confirm Password"
-            required="required"
+            required
+          />
+
+          <input
+            type="text"
+            name="institusi"
+            class="form-input"
+            placeholder="Institusi"
+            required
           />
 
           <button type="submit" class="form-btn">Sign Up</button>
         </form>
 
         <p class="form-footer">
-          Already have an account?
-          <a href="login.xhtml" class="form-link">Login</a>
+          Already have an Account?
+          <a href="login.html" class="form-link">Login</a>
         </p>
       </div>
     </div>

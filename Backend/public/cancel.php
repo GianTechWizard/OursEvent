@@ -1,4 +1,4 @@
-<!-- Pembatalan Pendaftaran Event -->
+
 
 <?php
     session_start();
@@ -13,7 +13,7 @@
 
     $id_daftar = $_SESSION["user_id"];
 
-    //Menghapus data user
+    
     $sql = "DELETE FROM pendaftaran_event WHERE id_daftar
             = '$id_daftar' AND id_user = '{$_SESSION['user_id']}'";
             
