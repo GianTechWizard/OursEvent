@@ -1,41 +1,296 @@
-<!-- ====================================================================
-FRONTEND FILE : events.html
----------------------------------------------------------------------------
-Tujuan file ini:
-✔ UI tampilan list event.
-✔ Event LIST di sini hanyalah contoh statis.
-✔ Data event yang sebenarnya AKAN muncul di BACKEND/public/events.php.
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Events Available</title>
+    <link rel="stylesheet" href="../css/event.css" />
+    <script src="../js/event.js"></script>
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="logo">OursEvent</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="event.html" class="active">Event</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </header>
 
-CATATAN FRONTEND:
-- File HTML INI HANYA untuk desain.
-- File PHP events.php akan menampilkan event menggunakan LOOPING dari DB.
-==================================================================== -->
+    <div class="page-wrapper">
+      <h2 class="title">Events Available</h2>
 
-<!-- /*
-==============================================================
-INI BAGIAN FRONTEND 
---------------------------------------------------------------
-Frontend akan membuat UI berupa daftar event.
+      <div class="event-grid">
+        <div class="event-card">
+          <img src="../assets/img/seminar nasional.jpeg" class="event-img" />
+          <div class="event-content">
+            <h3>Seminar Nasional</h3>
 
-Data yang tersedia:
-- $events berisi banyak baris event
-Format tiap row:
-[
-  'id_event' => ...,
-  'judul_event' => ...,
-  'nama_kategori' => ...,
-  'tanggal' => ...,
-  'lokasi' => ...,
-  'poster' => ...
-]
+            <div class="event-dates">
+              <div class="date-box">
+                <p class="label">Start</p>
+                <p>17 May 2025</p>
+                <p>09:00 WIB</p>
+              </div>
+              <div class="date-box">
+                <p class="label">End</p>
+                <p>17 May 2025</p>
+                <p>11.30 WIB</p>
+              </div>
+            </div>
 
-Frontend harus looping:
+            <p class="price">Rp. 50.000</p>
+            <button
+              class="btn detail"
+              onclick="openModal(
+              '../assets/img/seminar nasional.jpeg',
+              'Seminar Nasional',
+              '17 May 2025',
+              '09:00 - 11:30 WIB',
+              'Gedung Serbaguna',
+              'Rp. 50.000'
+              )"
+            >
+              Details
+            </button>
+          </div>
+        </div>
 
-foreach ($events as $row) {
-    tampilkan poster, judul event, lokasi, tanggal,
-    dan buat tombol "Detail" → event_detail.php?id=ID_EVENT
-}
+        <div class="event-card">
+          <img
+            src="../assets/img/seminar pendidikan nasional.jpeg"
+            class="event-img"
+          />
+          <div class="event-content">
+            <h3>Seminar Pendidikan Nasional 2025</h3>
 
-Backend hanya menyediakan data.
-==============================================================
-*/ -->
+            <div class="event-dates">
+              <div class="date-box">
+                <p class="label">Start</p>
+                <p>09 October 2025</p>
+                <p>07.00 WIB</p>
+              </div>
+              <div class="date-box">
+                <p class="label">End</p>
+                <p>09 October 2025</p>
+                <p>End</p>
+              </div>
+            </div>
+
+            <p class="price">Rp. 50.000</p>
+            <button
+              class="btn detail"
+              onclick="openModal(
+              '../assets/img/seminar pendidikan nasional.jpeg',
+              'Seminar Pendidikan Nasional 2025',
+              '09 October 2025',
+              '07:00 WIB',
+              'Aula Kampus',
+              'Rp. 50.000'
+              )"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <img src="../assets/img/webinar.jpeg" class="event-img" />
+          <div class="event-content">
+            <h3>Research Camp 2025</h3>
+
+            <div class="event-dates">
+              <div class="date-box">
+                <p class="label">Start</p>
+                <p>04 May 2025</p>
+                <p>08.00 WIB</p>
+              </div>
+              <div class="date-box">
+                <p class="label">End</p>
+                <p>04 May 2025</p>
+                <p>End</p>
+              </div>
+            </div>
+
+            <p class="price">Rp. 50.000</p>
+            <button
+              class="btn detail"
+              onclick="openModal(
+              '../assets/img/webinar.jpeg',
+              'Research Camp 2025',
+              '04 May 2025',
+              '08:00 WIB',
+              'Online',
+              'Rp. 50.000'
+              )"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+
+        <div class="event-card">
+          <img src="../assets/img/workshop.jpeg" class="event-img" />
+          <div class="event-content">
+            <h3>Digital Content Creator</h3>
+
+            <div class="event-dates">
+              <div class="date-box">
+                <p class="label">Start</p>
+                <p>10 May 2025</p>
+                <p>07.00 WIB</p>
+              </div>
+              <div class="date-box">
+                <p class="label">End</p>
+                <p>11 May 2025</p>
+                <p>13.00 WIB</p>
+              </div>
+            </div>
+
+            <p class="price">Rp. 50.000</p>
+            <button
+              class="btn detail"
+              onclick="openModal(
+              '../assets/img/workshop.jpeg',
+              'Digital Content Creator',
+              '10–11 May 2025',
+              '07:00 - 13:00 WIB',
+              'Ruang Workshop',
+              'Rp. 50.000'
+              )"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="eventModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <img id="modalImg" class="modal-img" />
+
+        <h3 id="modalTitle"></h3>
+        <p id="modalDate"></p>
+        <p id="modalTime"></p>
+        <p id="modalLocation"></p>
+        <p class="modal-price" id="modalPrice"></p>
+
+        <button class="btn">Buy Ticket</button>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Events Available</title>
+    <link rel="stylesheet" href="../css/event.css" />
+  </head>
+
+  <body>
+    <header class="top-header">
+      <div class="logo">OursEvent</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="event.html" class="active">Event</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </header>
+
+    <div class="page-wrapper">
+      <h2 class="title">Events Available</h2>
+
+      <div id="event-grid" class="event-grid"></div>
+
+      <p
+        id="no-events"
+        style="display: none; text-align: center; margin-top: 20px"
+      >
+        No events available yet
+      </p>
+    </div> -->
+
+<!-- Modal -->
+<!-- <div class="modal" id="eventModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <img id="modalImg" class="modal-img" />
+
+        <h3 id="modalTitle"></h3>
+        <p id="modalDate"></p>
+        <p id="modalTime"></p>
+        <p id="modalLocation"></p>
+        <p class="modal-price" id="modalPrice"></p>
+
+        <button class="btn">Buy Ticket</button>
+      </div>
+    </div>
+
+    <script src="../js/event.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Events Available</title>
+    <link rel="stylesheet" href="../css/event.css" />
+  </head>
+
+  <body>
+    <header class="top-header">
+      <div class="logo">OursEvent</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="event.html" class="active">Event</a>
+        <a href="profile.html">Profile</a>
+        <a href="../../Backend/public/logout.php">Logout</a>
+      </nav>
+    </header>
+
+    <div class="page-wrapper">
+      <h2 class="title">Events Available</h2>
+
+      <div id="event-grid" class="event-grid"></div>
+
+      <p
+        id="no-events"
+        style="display: none; text-align: center; margin-top: 20px"
+      >
+        No events available yet
+      </p>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="eventModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <img id="modalImg" class="modal-img" />
+
+        <h3 id="modalTitle"></h3>
+
+        <p id="modalSpeaker" style="font-weight: bold"></p>
+
+        <p id="modalDate"></p>
+        <p id="modalTime"></p>
+        <p id="modalLocation"></p>
+
+        <p id="modalDescription" style="margin-top: 10px"></p>
+
+        <p id="modalQuota"></p>
+
+        <p class="modal-price" id="modalPrice"></p>
+
+        <button class="btn" onclick="buyTicket()">Buy Ticket</button>
+      </div>
+    </div>
+
+    <script src="../js/event.js"></script>
+  </body>
+</html>

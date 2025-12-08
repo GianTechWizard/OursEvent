@@ -1,29 +1,56 @@
-<!-- ====================================================================
-FRONTEND FILE : index.html
----------------------------------------------------------------------------
-Tujuan file ini:
-✔ Menjadi halaman home (landing page) aplikasi.
-✔ Tidak mengambil data event (itu tugas index.php di BACKEND).
-✔ Hanya berisi tampilan statis (banner, welcome message, tombol ke events).
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events Participated</title>
 
-CATATAN FRONTEND:
-JANGAN pakai PHP di file ini.
-Semua elemen murni HTML + CSS + JS.
-==================================================================== -->
-/
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
 
-<!-- // INI BAGIAN FRONTEND:
-  
-// Bagian frontend akan membuat HTML untuk menampilkan
-// list event, seperti card event atau tabel event.
+  <body>
+    <header class="top-header">
+      <div class="logo">OursEvent</div>
 
-// Contoh UI yang harus dibuat frontend:
-// -------------------------------------
-// foreach ($events as $row) {
-//     tampilkan poster, judul event, tanggal, lokasi, tombol "LihatDetail"
-// }
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="event.html">Event</a>
+        <a href="profile.html">Profile</a>
+        <a href="../../Backend/public/logout.php">Logout</a>
+      </nav>
+    </header>
 
-// BACKEND hanya menyediakan data $events,
-// Frontend yang membuat tampilan.
-// ==========================================================
-// */ -->
+    <div class="container">
+      <h2 class="title">Events Participated</h2>
+
+      <div id="event-list"></div>
+
+      <p
+        id="no-events"
+        style="display: none; text-align: center; margin-top: 20px"
+      >
+        No events have been attended yet
+      </p>
+    </div>
+
+    <!-- MODAL DETAIL EVENT -->
+    <div id="detailModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeDetail()">&times;</span>
+
+        <h2 class="modal-title">Event Information</h2>
+        <p id="detailJudul"></p>
+        <p id="detailTanggal"></p>
+        <p id="detailJam"></p>
+        <p id="detailLokasi"></p>
+
+        <h2 class="modal-title">Registration Information</h2>
+        <p id="detailTiket"></p>
+        <p id="detailTotal"></p>
+        <p id="detailStatus"></p>
+      </div>
+    </div>
+
+    <script src="../js/home.js"></script>
+  </body>
+</html>

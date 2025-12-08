@@ -1,25 +1,46 @@
-
-
 <?php
-    session_start();
+session_start();
+header("Content-Type: application/json");
 
-    require_once "../includes/db_connect.php";
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
+    exit;
+}
 
-    //memastikan user sudah login 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ../public/login.php");
-        exit();
-    }
+require_once __DIR__ . "/../includes/db_connection.php";
 
-    $id_daftar = $_SESSION["user_id"];
+// Ambil JSON dari frontend
+$data = json_decode(file_get_contents("php://input"), true);
+$daftar_ids = $data["daftar_ids"] ?? [];
 
-    
-    $sql = "DELETE FROM pendaftaran_event WHERE id_daftar
-            = '$id_daftar' AND id_user = '{$_SESSION['user_id']}'";
-            
-    mysqli_query($conn, $sql);
+if (empty($daftar_ids)) {
+    echo json_encode(["success" => false, "message" => "Missing IDs"]);
+    exit;
+}
 
-    header("Location: my_registrasions.php");
-    exit();
+$id_user = $_SESSION['user_id'];
 
+// Konversi ke INT dan jadikan string untuk query IN()
+$daftar_ids = array_map("intval", $daftar_ids);
+$id_list = implode(",", $daftar_ids);
+
+// UPDATE — selalu success selama query tidak error
+$sql = "
+    UPDATE pendaftaran_event
+    SET status = 'Cancelled'
+    WHERE id_user = $id_user
+    AND id_daftar IN ($id_list)
+";
+
+$ok = mysqli_query($conn, $sql);
+
+echo json_encode([
+    "success" => $ok ? true : false,
+    "updated_ids" => $daftar_ids,
+    "debug" => [
+        "id_user" => $id_user,
+        "sql" => $sql
+    ]
+]);
+exit;
 ?>

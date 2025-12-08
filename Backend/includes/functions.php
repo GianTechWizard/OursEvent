@@ -1,4 +1,4 @@
-<!-- kumpulan fungsi penting untuk query database. -->
+<!-- kumpulan fungsi penting untuk query database (mysqli) -->
 
 <?php
     function getCategories($conn) {
@@ -14,8 +14,27 @@
     }
 
     function getEventById ($conn, $id) {
-        $id = mysqli_real_escape_string($conn, $id);
-        $sql = "SELECT * FROM events WHERE id_event = '$id's";
-        return mysqli_query($conn, $sql);
+        // $id = mysqli_real_escape_string($conn, $id);
+        // $sql = "SELECT * FROM events WHERE id_event = '$id's";
+        // return mysqli_query($conn, $sql);
+
+        $sql = "SELECT * FROM events WHERE id_event = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        if ($stmt === false) { return false; }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_close($stmt);
+        return $res;
     }
+
+    function getUserRegisteredEvents($conn, $userId) {
+        $query = "SELECT e.*
+              FROM registrations r
+              JOIN events e ON r.event_id = e.id
+              WHERE r.user_id = $userId";
+
+        return mysqli_query($conn, $query);
+    }
+
 ?>

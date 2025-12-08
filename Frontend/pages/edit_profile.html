@@ -11,27 +11,47 @@
     <header class="top-header">
       <div class="logo">OursEvent</div>
       <nav>
-        <a href="home.html">Home</a>
-        <a href="event.html">Event</a>
+        <a href="index.html">Home</a>
+        <a href="event.html">Events</a>
         <a href="profile.html">Profile</a>
+        <a href="../../Backend/public/logout.php">Logout</a>
       </nav>
     </header>
 
     <div class="edit-box">
       <h1>Edit Your Profile</h1>
 
-      <div class="edit-img"></div>
+      <form
+        id="editForm"
+        method="POST"
+        action="../../Backend/process/profile_update_process.php"
+      >
+        <div class="input-container">
+          <input
+            id="fullname"
+            name="username"
+            type="text"
+            placeholder="Full Name"
+          />
+          <input
+            id="phone"
+            name="no_hp"
+            type="text"
+            placeholder="Phone Number"
+          />
+          <input id="email" name="email" type="email" placeholder="Email" />
+          <input
+            id="institution"
+            name="institusi"
+            type="text"
+            placeholder="Institution"
+          />
+        </div>
 
-      <div class="input-container">
-        <input id="fullname" type="text" placeholder="Full Name" />
-        <input id="phone" type="text" placeholder="Phone Number" />
-        <input id="email" type="email" placeholder="Email" />
-        <input id="institution" type="text" placeholder="Institution" />
-      </div>
-
-      <button class="btn" id="confirmBtn">Confirm</button>
+        <button class="btn" type="submit">Confirm</button>
+      </form>
     </div>
 
-    <script src="../js/edit_profile.js"></script>
+    <script src="../js/edit_profile.js?v=3"></script>
   </body>
 </html>

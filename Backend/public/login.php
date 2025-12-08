@@ -1,4 +1,4 @@
 <?php
-    header("Location: ../../Fronntend/pages/login.php");
+    header("Location: ../../Frontend/pages/login.php");
 ?>
 

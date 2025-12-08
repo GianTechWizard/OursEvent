@@ -1,12 +1,20 @@
 <?php
-// Menghubungkan ke database (ISI CODE SINI - ERNEST)
-
-// Memanggil fungsi (ISI CODE SINI - ERNEST)
-
-// Ambil semua data event dari database (ISI CODE SINI - ERNEST)
+require_once "../includes/db_connection.php";
 
 header("Content-Type: application/json");
-echo json_encode($events);
-exit;
 
+$sql = "SELECT * FROM events";
+$result = mysqli_query($conn, $sql);
+
+$data = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+
+    $row['poster_url'] = "/OursEvent/Frontend/assets/img/" . $row['poster'];
+
+    $data[] = $row;
+}
+
+echo json_encode($data);
+exit;
 ?>

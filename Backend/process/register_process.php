@@ -1,34 +1,78 @@
 <?php
 
-   require_once "../includes/db_connection.php";
+require_once "../includes/db_connection.php";
 
-   $username = $_POST ['Nama Lengkap'];
-   $email = $_POST ['email'];
-   $no_hp = $_POST ['no_hp'];
-   $institusi = $_POST ['institusi'];
-   $password = $_POST ['password'];
-   $confirm_password = $_POST ['confirm_password'];
+// cek method POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: ../../Frontend/pages/register.html?error=invalid_method");
+    exit();
+}
 
-   if (empty ($nama_lengkap) || empty ($email) || empty ($no_hp) || empty($password) || empty ($institusi)) {
-      header("Location: ../public/register.php?error=empty");
-   }
+// ambil dan validasi input (tanpa ternary)
+$username = "";
+if (isset($_POST['username'])) { $username = trim($_POST['username']); }
 
-   if ($password !== $confirm_password) {
-      header("Location: ../public/register.php?error=password_mismatch");
-   }
+$email = "";
+if (isset($_POST['email'])) { $email = trim($_POST['email']); }
 
-   $check = mysqli_query($conn,"SELECT * FROM users WHERE email = '$email'");
-   if (mysqli_num_rows($check) > 0) {
-      header("Location: ../public/register.php?error=email_exists");
-   }
+$no_hp = "";
+if (isset($_POST['no_hp'])) { $no_hp = trim($_POST['no_hp']); }
 
-   $hashed = password_hash($password, PASSWORD_DEFAULT);
+$institusi = "";
+if (isset($_POST['institusi'])) { $institusi = trim($_POST['institusi']); }
 
-   $sql = "INSERT INTO users (username, email, password, no_hp, institusi, role)
-        VALUES ('$username', '$email', '$hashed_password', '$no_hp', '$institusi', 'users')";
-   
-   mysqli_query($conn, $sql);
+$password = "";
+if (isset($_POST['password'])) { $password = $_POST['password']; }
 
-   header("Location: ../public/login.php?success=registered"); 
-   exit();
+$confirm_password = "";
+if (isset($_POST['confirm_password'])) { $confirm_password = $_POST['confirm_password']; }
+
+if ($username === "" || $email === "" || $no_hp === "" || $institusi === "" || $password === "") {
+    header("Location: ../../Frontend/pages/register.html?error=empty");
+    exit();
+}
+
+if ($password !== $confirm_password) {
+    header("Location: ../../Frontend/pages/register.html?error=password_mismatch");
+    exit();
+}
+
+// cek apakah email sudah ada
+$check_sql = "SELECT id_user FROM users WHERE email = ?";
+$stmt_check = mysqli_prepare($conn, $check_sql);
+if ($stmt_check === false) {
+    header("Location: ../../Frontend/pages/register.html?error=server");
+    exit();
+}
+mysqli_stmt_bind_param($stmt_check, "s", $email);
+mysqli_stmt_execute($stmt_check);
+$res_check = mysqli_stmt_get_result($stmt_check);
+if (mysqli_num_rows($res_check) > 0) {
+    mysqli_stmt_close($stmt_check);
+    header("Location: ../../Frontend/pages/register.html?error=email_exists");
+    exit();
+}
+mysqli_stmt_close($stmt_check);
+
+// hash password dan insert
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+
+$insert_sql = "INSERT INTO users (username, email, password, no_hp, institusi, role, created_at)
+               VALUES (?, ?, ?, ?, ?, 'users', NOW())";
+$stmt_insert = mysqli_prepare($conn, $insert_sql);
+if ($stmt_insert === false) {
+    header("Location: ../../Frontend/pages/register.html?error=server");
+    exit();
+}
+mysqli_stmt_bind_param($stmt_insert, "sssss", $username, $email, $hashed, $no_hp, $institusi);
+$exec = mysqli_stmt_execute($stmt_insert);
+mysqli_stmt_close($stmt_insert);
+
+if ($exec) {
+    header("Location: ../../Frontend/pages/login.html?success=registered");
+    exit();
+} else {
+    header("Location: ../../Frontend/pages/register.html?error=failed");
+    exit();
+}
 ?>

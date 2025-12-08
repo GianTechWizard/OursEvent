@@ -1,1 +1,156 @@
-/* style Umum */
+/* ======================================
+   GLOBAL
+====================================== */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #8fc3ff;
+}
+
+/* ======================================
+   HEADER
+====================================== */
+.top-header {
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.top-header nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.top-header .logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+}
+
+.top-header nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ======================================
+   CONTENT
+====================================== */
+.container {
+  padding: 100px 40px 30px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+#event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+/* EVENT CARD */
+.event-card {
+  width: 260px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.event-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-content {
+  text-align: center;
+  padding: 12px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.btn-detail,
+.btn-cancel {
+  width: 80%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.btn-detail {
+  background: #0066ff;
+}
+.btn-cancel {
+  background: #ff2f2f;
+}
+
+/* ======================================
+   MODAL DETAIL
+====================================== */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 99999;
+}
+
+.modal-bg.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  width: 380px;
+  max-width: 90%;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}

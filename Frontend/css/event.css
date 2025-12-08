@@ -1,0 +1,367 @@
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #8fc3ff;
+}
+
+.top-header {
+  width: 100%;
+  padding: 18px 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4c93ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.top-header .logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+}
+
+.top-header nav a {
+  margin-left: 35px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.top-header nav a:hover {
+  text-decoration: underline;
+}
+
+.top-header nav .active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.page-wrapper {
+  padding: 120px 60px 40px;
+}
+
+.title {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.event-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  width: 260px;
+  background: white;
+  border-radius: 14px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.event-img {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px 14px 0 0;
+  object-fit: cover;
+}
+
+.event-content {
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.event-content h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.event-dates {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.date-box {
+  font-size: 13px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.price {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.btn {
+  width: 80%;
+  padding: 9px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+  background-color: #0066ff;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  width: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-price {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 22px;
+  cursor: pointer;
+} */
+
+/* ===== GLOBAL & HEADER (tidak berubah banyak) ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #8fc3ff;
+}
+
+.top-header {
+  width: 100%;
+  padding: 18px 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4c93ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.top-header .logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+}
+
+.top-header nav a {
+  margin-left: 35px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.top-header nav a:hover {
+  text-decoration: underline;
+}
+
+.top-header nav .active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.page-wrapper {
+  padding: 120px 60px 40px;
+}
+
+.title {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.event-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  width: 260px;
+  background: white;
+  border-radius: 14px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.event-img {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px 14px 0 0;
+  object-fit: cover;
+}
+
+.event-content {
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.event-content h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.event-dates {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.date-box {
+  font-size: 13px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.price {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.btn {
+  width: 80%;
+  padding: 9px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+  background-color: #0066ff;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* ===== MODAL OVERLAY =====
+   Tetap gunakan overlay full-screen. default hidden (display:none).
+   Ketika JS set display = "block", .modal akan tetap menjadi block,
+   tapi .modal-content kita posisikan fixed & di-center supaya tampil rapi.
+*/
+.modal {
+  display: none; /* JS akan men-set block */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* tetap sediakan flex fallback (tidak bergantung pada inline style) */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== MODAL BOX =====
+   Pindahkan posisi modal-content ke fixed dan center via transform.
+   Batasi ukuran dengan max-width / max-height agar tidak menutupi layar.
+*/
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 480px; /* batasi lebar modal */
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  position: fixed; /* penting: center meskipun parent display:block */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center di viewport */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  max-height: 90vh; /* agar scroll jika konten panjang */
+}
+
+/* ===== POSTER DI DALAM MODAL =====
+   Batasi tinggi gambar supaya tidak memenuhi seluruh modal.
+*/
+.modal-img {
+  width: 100%;
+  height: auto;
+  max-height: 55vh; /* batasi tinggi agar proporsional */
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* ===== PRICE & CLOSE ===== */
+.modal-price {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* kecilkan ukuran tombol close agar tidak tumpang tindih di mobile */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 12px;
+    max-width: 94%;
+  }
+  .modal-img {
+    max-height: 45vh;
+  }
+  .event-img {
+    height: 220px;
+  }
+}
