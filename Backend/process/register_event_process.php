@@ -14,7 +14,6 @@ if ($id_event <= 0 || $jumlah_tiket <= 0) {
     die("Invalid Data");
 }
 
-// Ambil harga event
 $sql_harga = "SELECT harga FROM events WHERE id_event = ?";
 $stmt_harga = $conn->prepare($sql_harga);
 $stmt_harga->bind_param("i", $id_event);
@@ -29,16 +28,14 @@ $row_harga = $result_harga->fetch_assoc();
 $harga = (int)$row_harga['harga']; 
 $stmt_harga->close();
 
-// Hitung total biaya
 $total_biaya = $harga * $jumlah_tiket;
 
-// --- FIX TERPENTING: UBAH "iiii" MENJADI "iiid"
 $sql_insert = "INSERT INTO pendaftaran_event 
                 (id_user, id_event, jumlah_tiket, total_biaya, status) 
                 VALUES (?, ?, ?, ?, 'Paid')";
 
 $stmt_insert = $conn->prepare($sql_insert);
-$stmt_insert->bind_param("iiid", $id_user, $id_event, $jumlah_tiket, $total_biaya);
+$stmt_insert->bind_param("iiii", $id_user, $id_event, $jumlah_tiket, $total_biaya);
 
 if ($stmt_insert->execute()) {
     echo "success";

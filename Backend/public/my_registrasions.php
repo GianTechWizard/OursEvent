@@ -2,7 +2,6 @@
 session_start();
 header("Content-Type: application/json");
 
-// Jika belum login
 if (!isset($_SESSION['user_id'])) {
     echo json_encode([]);
     exit;

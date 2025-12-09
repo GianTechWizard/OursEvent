@@ -39,3 +39,38 @@ fetch("http://localhost/OursEvent/Backend/public/profile.php", {
 document.getElementById("editBtn").addEventListener("click", function () {
   window.location.href = "edit_profile.html";
 });
+
+const deleteBtn = document.getElementById("deleteAccountBtn");
+const deleteModal = document.getElementById("deleteModal");
+
+const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
+deleteBtn.addEventListener("click", () => {
+  deleteModal.classList.add("show");
+});
+
+cancelDeleteBtn.addEventListener("click", () => {
+  deleteModal.classList.remove("show");
+});
+
+confirmDeleteBtn.addEventListener("click", async () => {
+  const response = await fetch(
+    "http://localhost/OursEvent/Backend/public/delete_account.php",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }
+  );
+
+  const result = await response.json();
+  console.log("Delete account:", result);
+
+  if (result.success) {
+    alert("Your account has been deleted.");
+    window.location.href = "login.html";
+  } else {
+    alert("Failed to delete account.");
+  }
+});

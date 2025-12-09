@@ -1,4 +1,3 @@
-// Script UI umum
 document.addEventListener("DOMContentLoaded", function () {
   const includeElements = document.querySelectorAll("[data-include]");
 

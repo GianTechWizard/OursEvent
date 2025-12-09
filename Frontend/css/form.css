@@ -1,4 +1,4 @@
-/* (opsional) styling khusus form */
+/* (opsional) styling khusus form
 
 body {
   margin: 0;
@@ -96,4 +96,293 @@ body {
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
+} */
+
+/* ======================================
+   FORM STYLES - LOGIN & REGISTER
+====================================== */
+:root {
+  --primary-blue: #6f85e6;
+  --secondary-blue: #a9bff7;
+  --form-blue: #dce4ff;
+  --light-blue: #eef2ff;
+  --white: #ffffff;
+  --gray-light: #999999;
+  --gray-medium: #777777;
+  --text-dark: #333333;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--secondary-blue);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ======================================
+   CONTAINER
+====================================== */
+.container {
+  width: 900px;
+  max-width: 90%;
+  height: 450px;
+  background: var(--secondary-blue);
+  display: flex;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+/* ======================================
+   LEFT BOX
+====================================== */
+.left-box {
+  width: 50%;
+  height: 100%;
+  background: var(--white);
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-box .title {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--gray-medium);
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+}
+
+.left-box .subtitle {
+  font-size: 15px;
+  color: var(--gray-light);
+  line-height: 22px;
+  margin: 0;
+}
+
+/* ======================================
+   RIGHT BOX
+====================================== */
+.right-box {
+  width: 50%;
+  height: 100%;
+  background: var(--primary-blue);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-box .welcome {
+  font-size: 22px;
+  text-align: center;
+  color: var(--white);
+  margin: 0 0 30px 0;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================================
+   FORM ELEMENTS
+====================================== */
+form {
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  transition: var(--transition);
+  color: var(--text-dark);
+}
+
+.input-group input:focus {
+  border-color: var(--white);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.input-group input::placeholder {
+  color: var(--gray-light);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--form-blue);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-dark);
+  margin-top: 10px;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+}
+
+.login-btn:hover {
+  background: var(--light-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* ======================================
+   SIGNUP TEXT
+====================================== */
+.signup-text {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+====================================== */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    max-width: 450px;
+  }
+
+  .left-box,
+  .right-box {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .left-box {
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+  }
+
+  .right-box {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .left-box .title {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .left-box .subtitle {
+    font-size: 14px;
+  }
+
+  .right-box .welcome {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  .left-box,
+  .right-box {
+    padding: 25px;
+  }
+
+  .left-box .title {
+    font-size: 28px;
+  }
+
+  .right-box .welcome {
+    font-size: 18px;
+  }
+
+  .input-group input {
+    padding: 12px 14px;
+  }
+
+  .login-btn {
+    padding: 12px;
+  }
+}
+
+/* ======================================
+   ANIMATION FOR BETTER UX
+====================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s ease;
+}
+
+.input-group,
+.login-btn,
+.signup-text {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.input-group:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.input-group:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.login-btn {
+  animation-delay: 0.4s;
+}
+.signup-text {
+  animation-delay: 0.5s;
 }

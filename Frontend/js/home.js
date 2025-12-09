@@ -1,6 +1,3 @@
-// ================================
-// LOAD REGISTRATIONS (FINAL)
-// ================================
 async function loadRegistrations() {
   try {
     const response = await fetch(
@@ -17,7 +14,6 @@ async function loadRegistrations() {
       return;
     }
 
-    // GROUP PER ID EVENT
     const grouped = {};
 
     events.forEach((ev) => {
@@ -48,7 +44,6 @@ async function loadRegistrations() {
       }
     });
 
-    // TAMPILKAN CARD EVENT
     Object.values(grouped).forEach((ev) => {
       const card = document.createElement("div");
       card.classList.add("event-card");
@@ -92,9 +87,6 @@ async function loadRegistrations() {
 
 loadRegistrations();
 
-// ================================
-// DETAIL MODAL
-// ================================
 function showDetail(ev) {
   document.getElementById("detailJudul").innerText =
     "Judul Event: " + ev.judul_event;
@@ -111,9 +103,10 @@ function showDetail(ev) {
   document.getElementById("detailTotal").innerText =
     "Total Biaya: Rp " + parseInt(ev.biaya_total).toLocaleString();
 
+  const statusFinal = ev.status_list.includes("Pending") ? "Pending" : "Paid";
+
   document.getElementById("detailStatus").innerText =
-    "Status Pembayaran: " +
-    (ev.status_list.includes("Pending") ? "Pending" : ev.status_list[0]);
+    "Status Pembayaran: " + statusFinal;
 
   document.getElementById("detailModal").classList.add("show");
 }
@@ -129,9 +122,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// ================================
-// CANCEL EVENT — FINAL
-// ================================
 document.addEventListener("click", async (e) => {
   if (e.target.classList.contains("btn-cancel")) {
     const ids = JSON.parse(e.target.dataset.ids);
@@ -158,8 +148,7 @@ document.addEventListener("click", async (e) => {
       return;
     }
 
-    // SELALU SUKSES SESUAI OPSI A
     e.target.closest(".event-card").remove();
-    alert("Event berhasil dibatalkan.");
+    alert("Registrations cancelled successfully");
   }
 });

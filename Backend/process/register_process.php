@@ -2,13 +2,11 @@
 
 require_once "../includes/db_connection.php";
 
-// cek method POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: ../../Frontend/pages/register.html?error=invalid_method");
     exit();
 }
 
-// ambil dan validasi input (tanpa ternary)
 $username = "";
 if (isset($_POST['username'])) { $username = trim($_POST['username']); }
 
@@ -37,7 +35,6 @@ if ($password !== $confirm_password) {
     exit();
 }
 
-// cek apakah email sudah ada
 $check_sql = "SELECT id_user FROM users WHERE email = ?";
 $stmt_check = mysqli_prepare($conn, $check_sql);
 if ($stmt_check === false) {
@@ -54,7 +51,7 @@ if (mysqli_num_rows($res_check) > 0) {
 }
 mysqli_stmt_close($stmt_check);
 
-// hash password dan insert
+// ====== Enkripsi password ======
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 
 $insert_sql = "INSERT INTO users (username, email, password, no_hp, institusi, role, created_at)

@@ -1,296 +1,277 @@
-/* body {
+
+:root {
+  --primary-blue: #0066ff;
+  --secondary-blue: #8fc3ff;
+  --danger-red: #ff2f2f;
+  --success-green: #2fcc71;
+  --white: #ffffff;
+  --black: #333333;
+  --gray: #666666;
+  --light-gray: #f5f5f5;
+  --nav-blue: #3a7bff;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #8fc3ff;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Arial", sans-serif;
+  background-color: var(--secondary-blue);
+  color: var(--black);
 }
 
 .top-header {
   width: 100%;
   padding: 18px 40px;
-  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #4c93ff;
+  background: var(--nav-blue);
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  z-index: 100;
+  box-shadow: var(--shadow-medium);
+  z-index: 1000;
+  transition: var(--transition);
 }
 
+/* Navigation container */
+.top-header nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Logo styling */
 .top-header .logo {
   font-size: 26px;
   font-weight: 700;
-  color: white;
+  color: var(--white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
+/* Navigation links */
 .top-header nav a {
-  margin-left: 35px;
   text-decoration: none;
-  color: white;
+  color: var(--white);
   font-size: 16px;
   font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: var(--transition);
+  opacity: 0.95;
 }
 
 .top-header nav a:hover {
-  text-decoration: underline;
+  opacity: 1;
+  color: #e6f0ff;
 }
 
-.top-header nav .active {
-  font-weight: 700;
-  text-decoration: underline;
+/* Active link indicator */
+.top-header nav a.active {
+  font-weight: 600;
+  opacity: 1;
+  color: #ffffff;
+}
+
+.top-header nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--white);
+  transform: scaleX(1);
+  border-radius: 2px;
+}
+
+.top-header nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.top-header nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.top-header nav a[href*="logout.php"] {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-left: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.top-header nav a[href*="logout.php"]:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .page-wrapper {
-  padding: 120px 60px 40px;
+  padding: 120px 40px 40px;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
 .title {
-  color: white;
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
 }
 
 .event-grid {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+#no-events {
+  display: none;
+  text-align: center;
+  margin-top: 40px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 18px;
+  backdrop-filter: blur(5px);
+  grid-column: 1 / -1;
 }
 
 .event-card {
-  width: 260px;
-  background: white;
-  border-radius: 14px;
-  padding-bottom: 20px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 280px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
 }
 
 .event-img {
   width: 100%;
-  height: 320px;
-  border-radius: 14px 14px 0 0;
+  height: 200px;
   object-fit: cover;
+  display: block;
+  transition: var(--transition);
+}
+
+.event-card:hover .event-img {
+  transform: scale(1.05);
 }
 
 .event-content {
   text-align: center;
-  margin-top: 10px;
-  padding: 0 10px;
+  padding: 20px 15px;
 }
 
 .event-content h3 {
-  font-size: 15px;
-  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  height: 50px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
+/* Event details */
 .event-dates {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
+  justify-content: space-around;
+  margin: 15px 0;
+  padding: 0 10px;
 }
 
 .date-box {
-  font-size: 13px;
+  text-align: center;
 }
 
 .label {
-  font-weight: bold;
-  margin-bottom: 3px;
+  font-size: 12px;
+  color: var(--gray);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.date-box span {
+  font-size: 14px;
+  color: var(--black);
+  font-weight: 500;
 }
 
 .price {
-  font-weight: bold;
-  margin: 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 15px 0;
+  display: block;
 }
 
 .btn {
   width: 80%;
-  padding: 9px;
-  border-radius: 6px;
-  color: white;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
+  color: var(--white);
+  margin-top: 10px;
   cursor: pointer;
-  margin-top: 8px;
-  font-size: 14px;
-  background-color: #0066ff;
+  font-weight: 600;
+  font-size: 15px;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
+  background: var(--primary-blue);
 }
 
 .btn:hover {
-  opacity: 0.85;
+  background: #0052d4;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .modal {
   display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  width: 350px;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
-}
-
-.modal-img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.modal-price {
-  font-weight: bold;
-  margin: 12px 0;
-}
-
-.close-btn {
-  position: absolute;
-  right: 12px;
-  top: 8px;
-  font-size: 22px;
-  cursor: pointer;
-} */
-
-/* ===== GLOBAL & HEADER (tidak berubah banyak) ===== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #8fc3ff;
-}
-
-.top-header {
-  width: 100%;
-  padding: 18px 40px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #4c93ff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  z-index: 100;
-}
-
-.top-header .logo {
-  font-size: 26px;
-  font-weight: 700;
-  color: white;
-}
-
-.top-header nav a {
-  margin-left: 35px;
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.top-header nav a:hover {
-  text-decoration: underline;
-}
-
-.top-header nav .active {
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-.page-wrapper {
-  padding: 120px 60px 40px;
-}
-
-.title {
-  color: white;
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.event-grid {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.event-card {
-  width: 260px;
-  background: white;
-  border-radius: 14px;
-  padding-bottom: 20px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
-}
-
-.event-img {
-  width: 100%;
-  height: 320px;
-  border-radius: 14px 14px 0 0;
-  object-fit: cover;
-}
-
-.event-content {
-  text-align: center;
-  margin-top: 10px;
-  padding: 0 10px;
-}
-
-.event-content h3 {
-  font-size: 15px;
-  margin-bottom: 6px;
-}
-
-.event-dates {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
-}
-
-.date-box {
-  font-size: 13px;
-}
-
-.label {
-  font-weight: bold;
-  margin-bottom: 3px;
-}
-
-.price {
-  font-weight: bold;
-  margin: 12px 0;
-}
-
-.btn {
-  width: 80%;
-  padding: 9px;
-  border-radius: 6px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 8px;
-  font-size: 14px;
-  background-color: #0066ff;
-}
-
-.btn:hover {
-  opacity: 0.85;
-}
-
-/* ===== MODAL OVERLAY =====
-   Tetap gunakan overlay full-screen. default hidden (display:none).
-   Ketika JS set display = "block", .modal akan tetap menjadi block,
-   tapi .modal-content kita posisikan fixed & di-center supaya tampil rapi.
-*/
-.modal {
-  display: none; /* JS akan men-set block */
   position: fixed;
   z-index: 9999;
   left: 0;
@@ -298,70 +279,250 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  /* tetap sediakan flex fallback (tidak bergantung pada inline style) */
-  display: none;
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   justify-content: center;
   align-items: center;
 }
 
-/* ===== MODAL BOX =====
-   Pindahkan posisi modal-content ke fixed dan center via transform.
-   Batasi ukuran dengan max-width / max-height agar tidak menutupi layar.
-*/
-.modal-content {
-  background: white;
-  width: 90%;
-  max-width: 480px; /* batasi lebar modal */
-  padding: 18px;
-  border-radius: 12px;
-  text-align: center;
-  position: fixed; /* penting: center meskipun parent display:block */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* center di viewport */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  overflow-y: auto;
-  max-height: 90vh; /* agar scroll jika konten panjang */
+.modal.show {
+  display: flex;
+  opacity: 1;
 }
 
-/* ===== POSTER DI DALAM MODAL =====
-   Batasi tinggi gambar supaya tidak memenuhi seluruh modal.
-*/
+.modal-content {
+  background: var(--white);
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .modal-img {
   width: 100%;
   height: auto;
-  max-height: 55vh; /* batasi tinggi agar proporsional */
+  max-height: 300px;
   object-fit: contain;
   border-radius: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  display: block;
 }
 
-/* ===== PRICE & CLOSE ===== */
+.modal-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0 0 15px 0;
+  line-height: 1.3;
+}
+
+.modal-content p {
+  font-size: 15px;
+  color: var(--gray);
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.modal-content p[style*="font-weight: bold"] {
+  color: var(--black);
+  font-weight: 600;
+}
+
 .modal-price {
-  font-weight: bold;
-  margin: 12px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 20px 0;
 }
 
 .close-btn {
   position: absolute;
-  right: 12px;
-  top: 8px;
-  font-size: 22px;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  color: var(--gray);
   cursor: pointer;
-  background: transparent;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+  background: none;
   border: none;
+  z-index: 1;
 }
 
-/* kecilkan ukuran tombol close agar tidak tumpang tindih di mobile */
-@media (max-width: 480px) {
-  .modal-content {
-    padding: 12px;
-    max-width: 94%;
+.close-btn:hover {
+  color: var(--danger-red);
+  background: rgba(255, 47, 47, 0.1);
+}
+
+@media (max-width: 768px) {
+  /* NAVBAR RESPONSIVE */
+  .top-header {
+    padding: 15px 20px;
   }
-  .modal-img {
-    max-height: 45vh;
+
+  .top-header .logo {
+    font-size: 22px;
   }
+
+  .top-header nav {
+    gap: 15px;
+  }
+
+  .top-header nav a {
+    font-size: 14px;
+  }
+
+  .top-header nav a[href*="logout.php"] {
+    padding: 6px 15px;
+    margin-left: 5px;
+  }
+
+  .page-wrapper {
+    padding: 100px 20px 30px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .event-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .event-card {
+    max-width: 250px;
+  }
+
   .event-img {
-    height: 220px;
+    height: 180px;
   }
+
+  .modal-content {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .modal-img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-header {
+    padding: 12px 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .top-header nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .top-header nav a {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  .page-wrapper {
+    padding: 140px 15px 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card {
+    max-width: 100%;
+  }
+
+  .event-img {
+    height: 200px;
+  }
+
+  .event-content h3 {
+    font-size: 16px;
+    height: 45px;
+  }
+
+  .modal-content {
+    padding: 20px 15px;
+    max-width: 95%;
+  }
+
+  .modal-img {
+    max-height: 200px;
+  }
+
+  .modal-content h3 {
+    font-size: 20px;
+  }
+
+  .modal-price {
+    font-size: 22px;
+  }
+}
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-card {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.event-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.event-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.event-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.event-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.event-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.event-card:nth-child(6) {
+  animation-delay: 0.6s;
 }

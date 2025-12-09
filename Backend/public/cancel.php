@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once __DIR__ . "/../includes/db_connection.php";
 
-// Ambil JSON dari frontend
 $data = json_decode(file_get_contents("php://input"), true);
 $daftar_ids = $data["daftar_ids"] ?? [];
 
@@ -20,11 +19,9 @@ if (empty($daftar_ids)) {
 
 $id_user = $_SESSION['user_id'];
 
-// Konversi ke INT dan jadikan string untuk query IN()
 $daftar_ids = array_map("intval", $daftar_ids);
 $id_list = implode(",", $daftar_ids);
 
-// UPDATE — selalu success selama query tidak error
 $sql = "
     UPDATE pendaftaran_event
     SET status = 'Cancelled'

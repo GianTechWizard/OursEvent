@@ -14,10 +14,6 @@
     }
 
     function getEventById ($conn, $id) {
-        // $id = mysqli_real_escape_string($conn, $id);
-        // $sql = "SELECT * FROM events WHERE id_event = '$id's";
-        // return mysqli_query($conn, $sql);
-
         $sql = "SELECT * FROM events WHERE id_event = ?";
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt === false) { return false; }

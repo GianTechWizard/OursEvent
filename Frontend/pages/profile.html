@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - OursEvent</title>
-
     <link rel="stylesheet" href="../css/profile.css" />
   </head>
   <body>
@@ -30,7 +29,29 @@
         <input id="institution" type="text" readonly />
       </div>
 
-      <button class="btn" id="editBtn">Edit Profile</button>
+      <div class="button-container">
+        <button class="btn" id="editBtn">Edit Profile</button>
+        <button type="button" class="btn-delete" id="deleteAccountBtn">
+          Delete Account
+        </button>
+      </div>
+    </div>
+
+    <div class="delete-modal" id="deleteModal">
+      <div class="delete-modal-content">
+        <h3>Delete Account</h3>
+        <p>
+          Are you sure you want to delete your account? This action cannot be
+          undone. All your data, including event registrations, will be
+          permanently removed.
+        </p>
+        <div class="delete-modal-actions">
+          <button class="btn-cancel" id="cancelDeleteBtn">Cancel</button>
+          <button class="btn-confirm-delete" id="confirmDeleteBtn">
+            Yes, Delete Account
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="../js/profile.js?v=2"></script>
