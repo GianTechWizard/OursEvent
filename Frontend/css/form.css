@@ -1,106 +1,3 @@
-/* (opsional) styling khusus form
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  background: #a9bff7;
-}
-
-.container {
-  width: 900px;
-  height: 450px;
-  background: #a9bff7;
-  margin: 70px auto;
-  display: flex;
-  border-radius: 10px;
-}
-
-.left-box {
-  width: 50%;
-  height: 100%;
-  background: white;
-  border-radius: 10px 0 0 10px;
-  padding: 30px 40px;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.left-box .title {
-  margin-top: 130px;
-  font-size: 38px;
-  font-weight: 600;
-  color: #777;
-}
-
-.left-box .subtitle {
-  margin-top: 10px;
-  font-size: 15px;
-  color: #999;
-  line-height: 22px;
-}
-
-.right-box {
-  width: 50%;
-  height: 100%;
-  background: #6f85e6;
-  border-radius: 0 10px 10px 0;
-  padding: 40px;
-  box-sizing: border-box;
-}
-
-.right-box .welcome {
-  font-size: 22px;
-  text-align: center;
-  color: white;
-  margin-bottom: 35px;
-}
-
-.input-group {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
-
-.login-btn {
-  width: 100%;
-  padding: 12px;
-  background: #dce4ff;
-  border: none;
-  margin-top: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.login-btn:hover {
-  background: #eef2ff;
-}
-
-.signup-text {
-  text-align: center;
-  margin-top: 15px;
-  color: white;
-}
-
-.signup-text a {
-  color: #fff;
-  font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
-} */
-
-/* ======================================
-   FORM STYLES - LOGIN & REGISTER
-====================================== */
 :root {
   --primary-blue: #6f85e6;
   --secondary-blue: #a9bff7;
@@ -129,9 +26,6 @@ body {
   align-items: center;
 }
 
-/* ======================================
-   CONTAINER
-====================================== */
 .container {
   width: 900px;
   max-width: 90%;
@@ -144,9 +38,6 @@ body {
   transition: var(--transition);
 }
 
-/* ======================================
-   LEFT BOX
-====================================== */
 .left-box {
   width: 50%;
   height: 100%;
@@ -173,9 +64,6 @@ body {
   margin: 0;
 }
 
-/* ======================================
-   RIGHT BOX
-====================================== */
 .right-box {
   width: 50%;
   height: 100%;
@@ -195,9 +83,6 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* ======================================
-   FORM ELEMENTS
-====================================== */
 form {
   width: 100%;
 }
@@ -256,9 +141,6 @@ form {
   transform: translateY(0);
 }
 
-/* ======================================
-   SIGNUP TEXT
-====================================== */
 .signup-text {
   text-align: center;
   margin-top: 20px;
@@ -280,9 +162,6 @@ form {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* ======================================
-   RESPONSIVE DESIGN
-====================================== */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -349,9 +228,6 @@ form {
   }
 }
 
-/* ======================================
-   ANIMATION FOR BETTER UX
-====================================== */
 @keyframes fadeIn {
   from {
     opacity: 0;
